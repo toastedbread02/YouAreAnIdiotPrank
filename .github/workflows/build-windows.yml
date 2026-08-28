@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install Python packages
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pyinstaller PySide6 python-vlc
@@ -29,12 +29,12 @@ jobs:
           winget install VideoLAN.VLC --silent --accept-package-agreements 
 --accept-source-agreements
 
-      - name: Build
+      - name: Build application
         run: |
-          pyinstaller --clean MyVisualDemo.spec
+          pyinstaller --clean "YouAreAnIdiot.spec"
 
-      - name: Upload EXE
+      - name: Upload build
         uses: actions/upload-artifact@v4
         with:
-          name: MyVisualDemo-Windows
-          path: dist/MyVisualDemo.exe
+          name: YouAreAnIdiot-Windows
+          path: dist/YouAreAnIdiot.exe
