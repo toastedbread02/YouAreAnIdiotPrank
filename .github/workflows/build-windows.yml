@@ -26,8 +26,7 @@ jobs:
 
       - name: Install VLC
         run: |
-          winget install VideoLAN.VLC --silent --accept-package-agreements 
---accept-source-agreements
+          winget install VideoLAN.VLC --silent --accept-package-agreements --accept-source-agreements
 
       - name: Build application
         run: |
